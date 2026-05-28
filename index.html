@@ -992,6 +992,7 @@
     .project-card {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(340px, .55fr);
+      grid-template-rows: auto auto;
       gap: 20px;
       align-items: start;
       overflow: hidden;
@@ -1003,11 +1004,19 @@
     .project-card:nth-child(3) { border-top-color: var(--charcoal); }
     .project-card:nth-child(4) { border-top-color: var(--silver); }
     .project-card:nth-child(5) { border-top-color: var(--slate); }
+    .project-card:nth-child(6) { border-top-color: var(--stone); }
+    .project-card:nth-child(7) { border-top-color: var(--charcoal); }
+    .project-card:nth-child(8) { border-top-color: var(--silver); }
 
     .project-card:hover {
       transform: translateY(-4px);
       border-color: rgba(53, 71, 94, .45);
       box-shadow: 0 20px 46px rgba(44, 62, 80, .16);
+    }
+
+    .project-card > div:first-child {
+      display: grid;
+      align-content: start;
     }
 
     .project-side {
@@ -1017,7 +1026,7 @@
     .project-image {
       position: relative;
       grid-column: 2;
-      grid-row: 1;
+      grid-row: 1 / span 2;
       min-height: 205px;
       margin: 0;
       overflow: hidden;
@@ -1057,10 +1066,11 @@
 
     .project-proof {
       display: grid;
-      grid-column: 1 / -1;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-column: 1;
+      grid-row: 2;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 0;
     }
 
     .project-proof span {
@@ -1195,8 +1205,8 @@
     }
 
     .js-reveal {
-      opacity: 0;
-      transform: translateY(24px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity .7s ease, transform .7s ease;
     }
 
@@ -1632,7 +1642,7 @@
             <div class="section-kicker">Projects</div>
             <h2 id="projects-title">Project proof cards.</h2>
           </div>
-          <p>Each card emphasizes the real data, model choice, constraint, and output. The links point to Moksha's public GitHub profile where available repositories can be inspected.</p>
+          <p>Eight CV-backed cards emphasize the real data, model choice, constraint, and output. The links point to Moksha's public GitHub profile where available repositories can be inspected.</p>
         </div>
         <div class="projects">
           <article class="project-card">
@@ -1715,6 +1725,69 @@
                 <span>Process: RFM + clustering + PCA validation</span>
                 <span>Output: Tableau segment dashboard</span>
                 <span>Impact: 22% improvement in campaign conversion rates</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <h3>Financial Risk Reporting & Fraud Detection</h3>
+              <div class="item-meta"><span>Risk analytics</span><span>6,000+ compliance records</span></div>
+              <p>Analyzed institutional compliance records to identify fraud signals through normalization, correlation analysis, and repeatable reporting logic. The work translated risk factors into Tableau dashboards with drill-down filters, KPI tracking, and time-series heatmaps.</p>
+              <div class="tags"><span>Python</span><span>SQL</span><span>Tableau</span><span>scikit-learn</span><span>Risk reporting</span></div>
+            </div>
+            <div class="project-side">
+              <figure class="project-image">
+                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80" alt="Financial documents and calculator representing fraud detection reporting">
+                <figcaption>Financial risk signals</figcaption>
+              </figure>
+              <div class="project-proof">
+                <span>Input: 6,000+ compliance records</span>
+                <span>Process: Z-score normalization + correlation analysis</span>
+                <span>Output: Tableau KPI dashboards and heatmaps</span>
+                <span>Finding: 5 risk factors predicted 85% of fraudulent activity</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <h3>Skin Cancer Classification with InceptionV3</h3>
+              <div class="item-meta"><span>Medical image classification</span><span>91% accuracy</span></div>
+              <p>Built a CNN classifier using InceptionV3 transfer learning for skin cancer image classification. The project included OpenCV preprocessing, AWS-backed large-scale processing, and robustness evaluation through ROC analysis for sensitivity and specificity.</p>
+              <div class="tags"><span>Python</span><span>TensorFlow</span><span>OpenCV</span><span>AWS</span><span>InceptionV3</span></div>
+            </div>
+            <div class="project-side">
+              <figure class="project-image">
+                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="Clinical technology and medical imaging environment representing CNN classification">
+                <figcaption>Medical imaging model</figcaption>
+              </figure>
+              <div class="project-proof">
+                <span>Input: medical image dataset</span>
+                <span>Process: InceptionV3 transfer learning + OpenCV preprocessing</span>
+                <span>Output: CNN classifier with ROC evaluation</span>
+                <span>Result: 91% classification accuracy</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div>
+              <h3>Fuzzy Neural Networks & GAN Research Systems</h3>
+              <div class="item-meta"><span>Deep learning research</span><span>SRM University AP</span></div>
+              <p>Designed and evaluated research-grade deep learning architectures including Fuzzy Neural Networks, GANs, CNNs, and LSTMs across computer vision and sequence classification tasks. The work emphasized comparative model evaluation, custom loss functions, transfer learning, and reproducible research handoff.</p>
+              <div class="tags"><span>Python</span><span>TensorFlow</span><span>PyTorch</span><span>GANs</span><span>Fuzzy Neural Networks</span></div>
+            </div>
+            <div class="project-side">
+              <figure class="project-image">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=900&q=80" alt="Abstract AI neural network visualization representing fuzzy neural networks and GAN research">
+                <figcaption>Neural research systems</figcaption>
+              </figure>
+              <div class="project-proof">
+                <span>Input: vision and sequence classification datasets</span>
+                <span>Process: FNNs, GANs, CNNs, LSTMs, transfer learning</span>
+                <span>Output: reproducible model comparisons and documentation</span>
+                <span>Impact: preprocessing reduced manual effort by 30%</span>
               </div>
             </div>
           </article>
