@@ -882,7 +882,7 @@
     }
 
     .timeline {
-      grid-template-columns: repeat(6, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
       align-items: stretch;
     }
@@ -896,7 +896,6 @@
 
     .timeline-item {
       position: relative;
-      grid-column: span 3;
       overflow: hidden;
       padding-top: 32px;
       border-top: 8px solid var(--slate);
@@ -905,7 +904,6 @@
     }
 
     .timeline-item:first-child {
-      grid-column: span 4;
       background:
         linear-gradient(135deg, rgba(53, 71, 94, .97), rgba(44, 62, 80, .94));
       color: #fff;
@@ -914,7 +912,6 @@
     }
 
     .timeline-item:nth-child(2) {
-      grid-column: span 2;
       border-top-color: var(--stone);
     }
 
