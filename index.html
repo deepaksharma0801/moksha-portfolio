@@ -756,6 +756,7 @@
       border-radius: var(--radius);
       background: rgba(236, 240, 241, .96);
       box-shadow: 0 10px 30px rgba(44, 62, 80, .16);
+      color: var(--ink);
     }
 
     .story-step .step-number {
@@ -776,6 +777,7 @@
       margin: 0;
       font-family: var(--font-display);
       font-size: 24px;
+      color: var(--ink);
     }
 
     .story-step p {
@@ -792,6 +794,10 @@
     }
 
     .case-visual {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .72fr);
+      gap: 24px;
+      align-items: end;
       min-height: 420px;
       padding: 24px;
       border: 1px solid rgba(44, 62, 80, .18);
@@ -805,21 +811,21 @@
     }
 
     .case-photo {
-      position: absolute;
-      inset: auto 24px 24px auto;
-      width: min(45%, 300px);
-      aspect-ratio: 4 / 3;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3.05;
       object-fit: cover;
       border: 7px solid #fff;
       border-radius: var(--radius);
       box-shadow: 0 18px 42px rgba(44, 62, 80, .22);
       opacity: .92;
+      align-self: end;
     }
 
     .pipeline {
       display: grid;
       gap: 13px;
-      max-width: 540px;
+      max-width: none;
     }
 
     .pipe-step {
@@ -832,9 +838,9 @@
       box-shadow: 0 10px 26px rgba(44, 62, 80, .10);
     }
 
-    .pipe-step:nth-child(2) { border-left-color: var(--green); margin-left: 34px; }
-    .pipe-step:nth-child(3) { border-left-color: var(--red); margin-left: 68px; }
-    .pipe-step:nth-child(4) { border-left-color: var(--gold); margin-left: 102px; }
+    .pipe-step:nth-child(2) { border-left-color: var(--green); margin-left: 24px; }
+    .pipe-step:nth-child(3) { border-left-color: var(--red); margin-left: 48px; }
+    .pipe-step:nth-child(4) { border-left-color: var(--gold); margin-left: 72px; }
 
     .pipe-step span {
       display: block;
@@ -875,11 +881,67 @@
       gap: 16px;
     }
 
+    .timeline {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
     .timeline-item,
     .project-card,
     .skill-card,
     .education-card {
       padding: 24px;
+    }
+
+    .timeline-item {
+      position: relative;
+      grid-column: span 3;
+      overflow: hidden;
+      padding-top: 32px;
+      border-top: 8px solid var(--slate);
+      background:
+        linear-gradient(135deg, rgba(236, 240, 241, .96), #fff 62%);
+    }
+
+    .timeline-item:first-child {
+      grid-column: span 4;
+      background:
+        linear-gradient(135deg, rgba(53, 71, 94, .97), rgba(44, 62, 80, .94));
+      color: #fff;
+      border-top-color: var(--silver);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .timeline-item:nth-child(2) {
+      grid-column: span 2;
+      border-top-color: var(--stone);
+    }
+
+    .timeline-item:nth-child(3) {
+      border-top-color: var(--charcoal);
+    }
+
+    .timeline-item:nth-child(4) {
+      border-top-color: var(--silver);
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -82px;
+      top: -92px;
+      border-radius: 50%;
+      border: 28px solid rgba(127, 140, 141, .12);
+      pointer-events: none;
+    }
+
+    .timeline-item:first-child p,
+    .timeline-item:first-child .item-meta,
+    .timeline-item:first-child .detail-list li {
+      color: rgba(255, 255, 255, .78);
     }
 
     .item-meta {
@@ -929,7 +991,7 @@
 
     .project-card {
       display: grid;
-      grid-template-columns: minmax(0, .92fr) minmax(260px, .48fr);
+      grid-template-columns: minmax(0, 1fr) minmax(340px, .55fr);
       gap: 20px;
       align-items: start;
       overflow: hidden;
@@ -949,12 +1011,13 @@
     }
 
     .project-side {
-      display: grid;
-      gap: 14px;
+      display: contents;
     }
 
     .project-image {
       position: relative;
+      grid-column: 2;
+      grid-row: 1;
       min-height: 205px;
       margin: 0;
       overflow: hidden;
@@ -994,8 +1057,10 @@
 
     .project-proof {
       display: grid;
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 10px;
-      margin-top: 15px;
+      margin-top: 4px;
     }
 
     .project-proof span {
@@ -1197,6 +1262,16 @@
         grid-template-columns: 1fr;
       }
 
+      .timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-item,
+      .timeline-item:first-child,
+      .timeline-item:nth-child(2) {
+        grid-column: auto;
+      }
+
       .story-sticky {
         position: relative;
         top: auto;
@@ -1204,10 +1279,27 @@
       }
 
       .case-photo {
-        position: relative;
-        inset: auto;
         width: 100%;
         margin-top: 24px;
+      }
+
+      .case-visual {
+        grid-template-columns: 1fr;
+      }
+
+      .project-image,
+      .project-proof {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .project-side {
+        display: grid;
+        gap: 14px;
+      }
+
+      .project-proof {
+        grid-template-columns: 1fr;
       }
 
       .portrait-wrap {
